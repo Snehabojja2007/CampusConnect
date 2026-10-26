@@ -15,9 +15,16 @@ public class JwtService {
     private final SecretKey secretKey;
 
     public JwtService() {
+        String secret = System.getenv("JWT_SECRET");
+
+        if (secret == null || secret.isBlank()) {
+                throw new IllegalStateException(
+                        "JWT_SECRET environment variable is not configured"
+                );
+        }
+
         this.secretKey = Keys.hmacShaKeyFor(
-                "campusconnect-secret-key-for-jwt-authentication-2026"
-                        .getBytes()
+                java.util.Base64.getDecoder().decode(secret)
         );
     }
 
