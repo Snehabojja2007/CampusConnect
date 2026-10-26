@@ -19,6 +19,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import io.jsonwebtoken.JwtException;
 
+import com.campusconnect.entity.Role;
+
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
@@ -51,6 +53,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     SecurityContextHolder.getContext().getAuthentication() == null) {
 
                 String role = jwtService.extractRole(token);
+
+                if (role == null || role.isBlank()) {
+                    throw new IllegalArgumentException("JWT role is missing");
+                }
+
+                Role.valueOf(role);
 
                 UsernamePasswordAuthenticationToken authentication =
                         new UsernamePasswordAuthenticationToken(
