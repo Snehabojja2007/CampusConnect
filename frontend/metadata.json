@@ -1,0 +1,6 @@
+{
+  "name": "CampusConnect",
+  "description": "Campus Lost & Found Management Platform with role-based workflows for Students, Security, and Administrators.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

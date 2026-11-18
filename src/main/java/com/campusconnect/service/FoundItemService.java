@@ -110,6 +110,7 @@ public class FoundItemService {
         foundItem.setDescription(request.getDescription());
         foundItem.setLocation(request.getLocation());
         foundItem.setFoundDate(request.getFoundDate());
+        foundItem.setModerationStatus(ModerationStatus.PENDING);
 
         return foundItemRepository.save(foundItem);
     }

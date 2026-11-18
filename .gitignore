@@ -38,3 +38,5 @@ src/test/resources/application-test.properties
 .env
 .env.*
 !.env.example
+# Node dependencies
+node_modules/
